@@ -11,8 +11,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r setup, include=FALSE}
 library(knitr)
-source("/Users/quinnrosenberg/final-projects-jsmargarones/summary_information.R")
-source("/Users/quinnrosenberg/final-projects-jsmargarones/Chart#3.R")
+source("summary_information.R")
+source("Chart#3.R")
 ```
 
 ## Introduction
@@ -36,5 +36,6 @@ This bubble map took the top 48 automakers in terms of market capital and groupe
 
 ```{r stock_plot, echo=FALSE}
 stock_plot <- ggplotly(average_stock_price_by_country, tooltip = "text")
+stock_plot
 ```
 
