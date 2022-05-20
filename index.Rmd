@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r setup, include=FALSE}
+```{r data, include=FALSE}
 library(knitr)
 source("summary_information.R")
 source("Chart#3.R")
@@ -34,7 +34,7 @@ Tesla stock sold its most units in _`r summary_info$max_volume_year$Year`_ with 
 ## Chart 3: Interactive Bubble Map of Average Stock Price by Country
 This bubble map took the top 48 automakers in terms of market capital and grouped them by country to show which countries had the highest average stock price for auto makers. Tesla had the highest stock price of all the companies but the US did not have the highest price which shows that Tesla dominates other auto makers the US market.
 
-```{r stock_plot, echo=FALSE}
+```{r bubblemap, echo=FALSE}
 stock_plot <- ggplotly(average_stock_price_by_country, tooltip = "text")
 stock_plot
 ```
