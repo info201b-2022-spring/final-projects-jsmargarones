@@ -39,11 +39,11 @@ average_stock_price_by_country <- ggplot() +
   geom_point(data = by_country, aes(x = longitude, y = latitude, size = mean_price, color = mean_price, text = mytext, alpha = mean_price)) +
   scale_size_continuous(range = c(1,14)) +
   scale_color_viridis(option = "inferno", trans ="log") +
-  scale_alpha_continuous(trans="log") +
+  scale_alpha_continuous(trans ="log") +
   theme_void() +
   theme(legend.position = "left") +
-  title("Average Stock Price by Country")
+  title("Average Stock Price by Country") 
 
-#Get interactive bubble map(must look in 'Viewer' not 'Plots')
+#Get interactive bubble map(must look in "Viewer" not "Plots")
 stock_plot <- ggplotly(average_stock_price_by_country, tooltip = "text")
 

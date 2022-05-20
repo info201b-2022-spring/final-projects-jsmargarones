@@ -1,0 +1,40 @@
+---
+title: "index.Rmd"
+author: "Quinn Rosenberg, Rudy Thatcher, Josie Margarones, Ziqiang Wei"
+date: "5/20/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r setup, include=FALSE}
+library(knitr)
+source("/Users/quinnrosenberg/final-projects-jsmargarones/summary_information.R")
+source("/Users/quinnrosenberg/final-projects-jsmargarones/Chart#3.R")
+```
+
+## Introduction
+
+## Summary Information
+The dataset calculated _`r summary_info$num_variables`_ variables of data from _`r summary_info$num_observations`_ different dates 
+Tesla stock price was highest on _`r summary_info$max_date$Date`_ at a price of _`r summary_info$max_date$High`_ US dollars.
+From this dataset, Tesla stock has sold _`r summary_info$total_units_sold`_ units, which is an average of _`r summary_info$mean_volume`_ units per day.
+The largest jump in Tesla stock price was _`r summary_info$max_price_jump$price_change`_ US dollars on _`r summary_info$max_price_jump$Date`_. The largest drop in Tesla stock price was _`r summary_info$max_price_drop$price_change`_ US dollars on _`r summary_info$max_price_drop$Date`_.
+Tesla stock price increased the most in _`r summary_info$max_change_year$Year`_ with a total price change of _`r summary_info$max_change_year$price_change`_ US dollars. Tesla stock price increased the least in _`r summary_info$min_change_year$Year`_ with a total price change of _`r summary_info$min_change_year$price_change`_.
+Tesla stock sold its most units in _`r summary_info$max_volume_year$Year`_ with a total of _`r summary_info$max_volume_year$Volume`_ units. Tesla stock sold its least units in _`r summary_info$min_volume_year$Year`_ with a total of _`r summary_info$min_volume_year$Volume`_ units.
+
+## Aggregate Table
+
+## Chart 1
+
+## Chart 2
+
+## Chart 3: Interactive Bubble Map of Average Stock Price by Country
+This bubble map took the top 48 automakers in terms of market capital and grouped them by country to show which countries had the highest average stock price for auto makers. Tesla had the highest stock price of all the companies but the US did not have the highest price which shows that Tesla dominates other auto makers the US market.
+
+```{r stock_plot, echo=FALSE}
+stock_plot <- ggplotly(average_stock_price_by_country, tooltip = "text")
+```
+
