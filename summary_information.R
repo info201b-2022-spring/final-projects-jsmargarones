@@ -73,14 +73,3 @@ summary_info$min_volume_year <- tesla_stock_df %>%
   distinct(Volume) %>%
   ungroup() %>%
   filter(Volume == min(Volume))
-
-
-
-
-  
-  
-         
-
-
-
-
