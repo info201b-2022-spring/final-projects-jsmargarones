@@ -1,7 +1,7 @@
 library(dplyr)
 library(stringr)
 
-tesla_stock_df <- read.csv("/Users/quinnrosenberg/final-projects-jsmargarones/TSLA.csv")
+tesla_stock_df <- read.csv("/Users/quinnrosenberg/downloads/TSLA.csv")
   
 summary_info <- list()
 
