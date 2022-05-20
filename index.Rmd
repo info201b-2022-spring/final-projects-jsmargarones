@@ -27,7 +27,21 @@ Tesla stock price increased the most in _`r summary_info$max_change_year$Year`_ 
 Tesla stock sold its most units in _`r summary_info$max_volume_year$Year`_ with a total of _`r summary_info$max_volume_year$Volume`_ units. Tesla stock sold its least units in _`r summary_info$min_volume_year$Year`_ with a total of _`r summary_info$min_volume_year$Volume`_ units.
 
 ## Aggregate Table
+library("dplyr")
+library("stringr")
+library("tidyverse")
 
+rank_df <- read.csv("/Users/ziqiangwei/Downloads/Largest automakers by market capitalization.csv")
+
+
+country <- group_by(select(rank_df, "country"))
+
+tab <- table(country)
+print(tab)
+
+# The reason I choose this feature is that we want to figure out the relationship
+# between countries, car brands, and the prices of their stocks. Therefore, we 
+# have to know how many countries in the dataset.
 ## Chart 1
 
 ## Chart 2
