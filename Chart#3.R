@@ -46,3 +46,4 @@ average_stock_price_by_country <- ggplot() +
 
 #Get interactive bubble map(must look in 'Viewer' not 'Plots')
 stock_plot <- ggplotly(average_stock_price_by_country, tooltip = "text")
+
