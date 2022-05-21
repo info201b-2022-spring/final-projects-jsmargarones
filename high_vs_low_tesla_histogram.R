@@ -8,12 +8,12 @@ library(tidyverse)
 
 tesla <- read.csv("/Users/josiemargarones/Downloads/tesla.csv")
 
+# adds a column to the Tesla table that finds the difference between stock high and low daily
 tesla <- tesla %>%
   mutate(difference_daily = High - Low)
 
-
+# histogram that illustrates the difference in Tesla stock prices on a certain date
 histogram_tesla <- ggplot(data = tesla, aes(x = Date, y = difference_daily, color = difference_daily)) +
-  # binwidth is 7 so it's organized by weeks
   geom_bar(stat = "identity") +
   scale_fill_brewer(palette = "Set1") +
   theme(legend.position = "none") +
