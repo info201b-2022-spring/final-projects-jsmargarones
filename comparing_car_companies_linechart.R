@@ -32,7 +32,7 @@ volkswagen <- volkswagen %>%
   # adding col with the average price of the day for Tesla stock
   mutate(avg_price_vollkswagen = (High + Low)/2)
 
-# merge with dates, avg_price_tesla, and avg_price_lucid
+# merges all the data into one table
 all_data <- merge(tesla, lucid, by = 'Date')
 all_data <- merge(all_data, volkswagen, by = 'Date')
 
