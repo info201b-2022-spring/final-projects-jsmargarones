@@ -43,8 +43,10 @@ print(tab)
 # between countries, car brands, and the prices of their stocks. Therefore, we 
 # have to know how many countries in the dataset.
 ## Chart 1
+This Line Chart compares Tesla’s stocks to different companies that are in direct competition with Tesla. Volkswagen is a leading, mainly gas car company while Lucid Motors is a rising electric car company. It shows Tesla's stock to be exceedingly higher than the other two companies.
 
 ## Chart 2
+The histogram illustrates how much Tesla stock fluctuates on the daily. This graph is important for looking for days when Tesla does something positively or negatively that results in the stock price increasing or decreasing. There is no legend because the histogram only deals with one data type
 
 ## Chart 3: Interactive Bubble Map of Average Stock Price by Country
 This bubble map took the top 48 automakers in terms of market capital and grouped them by country to show which countries had the highest average stock price for auto makers. Tesla had the highest stock price of all the companies but the US did not have the highest price which shows that Tesla dominates other auto makers the US market.
