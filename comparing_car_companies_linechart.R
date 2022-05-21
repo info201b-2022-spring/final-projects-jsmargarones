@@ -36,6 +36,7 @@ volkswagen <- volkswagen %>%
 all_data <- merge(tesla, lucid, by = 'Date')
 all_data <- merge(all_data, volkswagen, by = 'Date')
 
+# colors declared before ggplot so the legend corresponds
 colors <- c("Tesla" = "red", "Volkswagen" = "blue", "Lucid Motors" = "green")
 # line chart
 line_chart <- ggplot(data = all_data, aes(x = Date, group = 1)) +
