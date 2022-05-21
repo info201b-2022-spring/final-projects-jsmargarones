@@ -17,7 +17,7 @@ histogram_tesla <- ggplot(data = tesla, aes(x = Date, y = difference_daily, colo
   geom_bar(stat = "identity") +
   scale_fill_brewer(palette = "Set1") +
   theme(legend.position = "none") +
-  ggtitle("High vs Low Weekly of Tesla Stock") +
+  ggtitle("High vs Low of Tesla Stock Daily") +
   xlab('Date') +
   ylab('Difference between stock high and low') +
   theme(
