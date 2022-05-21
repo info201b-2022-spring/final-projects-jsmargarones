@@ -1,0 +1,56 @@
+---
+title: "index.Rmd"
+author: "Quinn Rosenberg, Rudy Thatcher, Josie Margarones, Ziqiang Wei"
+date: "5/20/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r data, include=FALSE}
+library(knitr)
+source("summary_information.R")
+source("Chart#3.R")
+```
+
+## Introduction
+Throughout our project, we will be referring to three datasets that we found through Kaggle. The first dataset analyzes the top 48 automakers' daily stock prices, another specifically does deep analysis on Tesla stock alone, and the other does stock analysis on electric/gas car manufacturers. Our group will be mutating the top 48 automakers dataset to make it a bit more useful for investors who want to see if electric car manufacturers like Tesla or Lucid Motors are a worthy future investment or if they should stick with gas manufacturers like Ford and Audi. As it stands now, the dataset provides us with 48 automakers' market cap, stock prices, and the country they originated from. While that information is very useful for investors, our group will be mutating the dataset to add more columns to make the dataset more helpful for investors. We will add columns that specify whether the automaker makes electric vehicles, gas vehicles, or both. Another column that will display if the stock for that automaker is either positive or negative for that day. For the Tesla-specific dataset, we will keep it in its original format because it gives us all the valuable information we need, like opening stock price for that day, closing stock price, stock high, stock low, and the number of units traded in a day. While being less specific, our last dataset gives us opening and closing stock prices from car manufacturers like Rolls Royce and Audi that produce not only gas cars but also electric cars. For our three graphs, we will have one that compares the stock prices of automakers based on the manufacturing country. Another graph comparing the stock prices of two of the top electric manufacturers (Tesla and Lucid Motors) over time. The last graph will show the fluctuation of Tesla stock prices daily. As we mentioned in our project proposal, the information from this dataset can serve useful for investors who want to invest in automakers—knowing important details like where the automakers make their cars, whether it is electric, gas, or both, and if the stock is up or down. More importantly, are electric automakers like Lucid Motors and Tesla the future of investments, or should investors still dump their money into the good old gas engine automakers? That is the goal we are trying to show through these datasets. 
+
+## Summary Information
+The dataset calculated _`r summary_info$num_variables`_ variables of data from _`r summary_info$num_observations`_ different dates 
+Tesla stock price was highest on _`r summary_info$max_date$Date`_ at a price of _`r summary_info$max_date$High`_ US dollars.
+From this dataset, Tesla stock has sold _`r summary_info$total_units_sold`_ units, which is an average of _`r summary_info$mean_volume`_ units per day.
+The largest jump in Tesla stock price was _`r summary_info$max_price_jump$price_change`_ US dollars on _`r summary_info$max_price_jump$Date`_. The largest drop in Tesla stock price was _`r summary_info$max_price_drop$price_change`_ US dollars on _`r summary_info$max_price_drop$Date`_.
+Tesla stock price increased the most in _`r summary_info$max_change_year$Year`_ with a total price change of _`r summary_info$max_change_year$price_change`_ US dollars. Tesla stock price increased the least in _`r summary_info$min_change_year$Year`_ with a total price change of _`r summary_info$min_change_year$price_change`_.
+Tesla stock sold its most units in _`r summary_info$max_volume_year$Year`_ with a total of _`r summary_info$max_volume_year$Volume`_ units. Tesla stock sold its least units in _`r summary_info$min_volume_year$Year`_ with a total of _`r summary_info$min_volume_year$Volume`_ units.
+
+## Aggregate Table
+library("dplyr")
+library("stringr")
+library("tidyverse")
+
+rank_df <- read.csv("/Users/ziqiangwei/Downloads/Largest automakers by market capitalization.csv")
+
+
+country <- group_by(select(rank_df, "country"))
+
+tab <- table(country)
+print(tab)
+
+# The reason I choose this feature is that we want to figure out the relationship
+# between countries, car brands, and the prices of their stocks. Therefore, we 
+# have to know how many countries in the dataset.
+## Chart 1
+
+## Chart 2
+
+## Chart 3: Interactive Bubble Map of Average Stock Price by Country
+This bubble map took the top 48 automakers in terms of market capital and grouped them by country to show which countries had the highest average stock price for auto makers. Tesla had the highest stock price of all the companies but the US did not have the highest price which shows that Tesla dominates other auto makers the US market.
+
+```{r bubblemap, echo=FALSE}
+stock_plot <- ggplotly(average_stock_price_by_country, tooltip = "text")
+stock_plot
+```
+
