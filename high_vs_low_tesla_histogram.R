@@ -6,7 +6,7 @@ library("dplyr")
 library(tidyverse)
 
 
-tesla <- read.csv("/Users/josiemargarones/Downloads/tesla.csv")
+tesla <- read.csv("/Users/quinnrosenberg/Downloads/tesla.csv")
 
 # adds a column to the Tesla table that finds the difference between stock high and low daily
 tesla <- tesla %>%
@@ -23,4 +23,6 @@ histogram_tesla <- ggplot(data = tesla, aes(x = Date, y = difference_daily, colo
   theme(
     plot.title = element_text(face = "bold")
     ) 
+histogram_tesla
+
 

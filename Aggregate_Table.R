@@ -1,0 +1,15 @@
+library("dplyr")
+library("stringr")
+library("tidyverse")
+
+rank_df <- read.csv("/Users/quinnrosenberg/Downloads/Largest automakers by market capitalization.csv")
+
+
+country <- group_by(select(rank_df, "country"))
+
+tab <- table(country)
+print(tab)
+
+# The reason I choose this feature is that we want to figure out the relationship
+# between countries, car brands, and the prices of their stocks. Therefore, we 
+# have to know how many countries in the dataset.

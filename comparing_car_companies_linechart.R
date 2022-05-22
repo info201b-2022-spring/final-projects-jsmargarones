@@ -7,9 +7,9 @@ library("ggplot2")
 library("dplyr")
 library('tidyverse')
 
-tesla <- read.csv("/Users/josiemargarones/Downloads/tesla.csv")
-lucid <- read.csv("/Users/josiemargarones/Downloads/lucid motors.csv")
-volkswagen <- read.csv("/Users/josiemargarones/Downloads/Volkswagen.csv")
+tesla <- read.csv("/Users/quinnrosenberg/Downloads/tesla.csv")
+lucid <- read.csv("/Users/quinnrosenberg/Downloads/lucid motors.csv")
+volkswagen <- read.csv("/Users/quinnrosenberg/Downloads/Volkswagen.csv")
 
 # finds earliest lucid date
 lucid_earliest <- lucid %>%
