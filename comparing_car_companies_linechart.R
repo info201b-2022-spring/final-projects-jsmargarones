@@ -8,9 +8,15 @@ library("dplyr")
 library('tidyverse')
 library('shiny')
 
+<<<<<<< HEAD
  tesla <- read.csv("/Users/josiemargarones/Downloads/tesla.csv")
 lucid <- read.csv("/Users/josiemargarones/Downloads/lucid motors.csv")
 volkswagen <- read.csv("/Users/josiemargarones/Downloads/Volkswagen.csv")
+=======
+tesla <- read.csv("/Users/quinnrosenberg/Downloads/tesla.csv")
+lucid <- read.csv("/Users/quinnrosenberg/Downloads/lucid motors.csv")
+volkswagen <- read.csv("/Users/quinnrosenberg/Downloads/Volkswagen.csv")
+>>>>>>> 83c964ddbd927592da56c491d3d1ea23ef35e1d9
 
 # finds earliest lucid date
 lucid_earliest <- lucid %>%
@@ -33,10 +39,11 @@ volkswagen <- volkswagen %>%
   # adding col with the average price of the day for Tesla stock
   mutate(avg_price_vollkswagen = (High + Low)/2)
 
-# merge with dates, avg_price_tesla, and avg_price_lucid
+# merges all the data into one table
 all_data <- merge(tesla, lucid, by = 'Date')
 all_data <- merge(all_data, volkswagen, by = 'Date')
 
+# colors declared before ggplot so the legend corresponds
 colors <- c("Tesla" = "red", "Volkswagen" = "blue", "Lucid Motors" = "green")
 # line chart
 line_chart <- ggplot(data = all_data, aes(x = Date, group = 1)) +

@@ -8,7 +8,7 @@ library(plotly)
 auto_df <- read.csv("/Users/quinnrosenberg/downloads/Largest automakers by market capitalization.csv")
 
 #load the map
-world_map <- map('world',col="darkgrey", fill=TRUE, bg="white", lwd=0.05, mar=rep(0,4),border=0, ylim=c(-80,80) )
+world_map <- maps::map("world",col="darkgrey", fill=TRUE, bg="white", lwd=0.05, mar=rep(0,4),border=0, ylim=c(-80,80))
 
 #find the total market cap for each country in billions of dollars
 by_country <- auto_df %>% 

@@ -13,6 +13,9 @@ knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 source("summary_information.R")
 source("Chart#3.R")
+source("high_vs_low_tesla_histogram.R")
+source("comparing_car_companies_linechart.R")
+source("Aggregate_Table.R")
 ```
 
 ## Introduction
@@ -27,24 +30,34 @@ Tesla stock price increased the most in _`r summary_info$max_change_year$Year`_ 
 Tesla stock sold its most units in _`r summary_info$max_volume_year$Year`_ with a total of _`r summary_info$max_volume_year$Volume`_ units. Tesla stock sold its least units in _`r summary_info$min_volume_year$Year`_ with a total of _`r summary_info$min_volume_year$Volume`_ units.
 
 ## Aggregate Table
-library("dplyr")
-library("stringr")
-library("tidyverse")
+The reason I choose this feature is that we want to figure out the relationship between countries, car brands, and the prices of their stocks. Therefore, we have to know how many countries in the dataset.
 
-rank_df <- read.csv("/Users/ziqiangwei/Downloads/Largest automakers by market capitalization.csv")
-
-
+```{r table, echo=FALSE}
 country <- group_by(select(rank_df, "country"))
-
 tab <- table(country)
 print(tab)
+```
 
-# The reason I choose this feature is that we want to figure out the relationship
-# between countries, car brands, and the prices of their stocks. Therefore, we 
-# have to know how many countries in the dataset.
-## Chart 1
+## Chart 1: Comparing Car Companies Linechart
+This Line Chart compares Tesla’s stocks to different companies that are in direct competition with Tesla. Volkswagen is a leading, mainly gas car company while Lucid Motors is a rising electric car company. It shows Tesla's stock to be exceedingly higher than the other two companies.
 
-## Chart 2
+```{r linechart, echo=FALSE}
+line_chart <- ggplot(data = all_data, aes(x = Date, group = 1)) +
+  geom_line(aes(y = avg_price_tesla, color = "Tesla"), size = 1.5) +
+  geom_line(aes(y = avg_price_vollkswagen, color = "Volkswagen"), size = 1.5) +
+  geom_line(aes(y = avg_price_lucid, color = "Lucid Motors"), size = 1.5) +
+  ggtitle("Comparison of Tesla, Lucid Motor, and Volkswagen Stock") +
+  ylab("Stock Price") +
+  xlab("Date")
+line_chart
+```
+
+## Chart 2: High vs Low Tesla Histogram
+The histogram illustrates how much Tesla stock fluctuates on the daily. This graph is important for looking for days when Tesla does something positively or negatively that results in the stock price increasing or decreasing. There is no legend because the histogram only deals with one data type
+
+```{r histogram, echo=FALSE}
+histogram_tesla
+```
 
 ## Chart 3: Interactive Bubble Map of Average Stock Price by Country
 This bubble map took the top 48 automakers in terms of market capital and grouped them by country to show which countries had the highest average stock price for auto makers. Tesla had the highest stock price of all the companies but the US did not have the highest price which shows that Tesla dominates other auto makers the US market.
