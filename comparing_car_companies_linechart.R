@@ -6,8 +6,9 @@
 library("ggplot2")
 library("dplyr")
 library('tidyverse')
+library('shiny')
 
-tesla <- read.csv("/Users/josiemargarones/Downloads/tesla.csv")
+ tesla <- read.csv("/Users/josiemargarones/Downloads/tesla.csv")
 lucid <- read.csv("/Users/josiemargarones/Downloads/lucid motors.csv")
 volkswagen <- read.csv("/Users/josiemargarones/Downloads/Volkswagen.csv")
 
@@ -45,5 +46,4 @@ line_chart <- ggplot(data = all_data, aes(x = Date, group = 1)) +
   ggtitle("Comparison of Tesla, Lucid Motor, and Volkswagen Stock") +
   ylab("Stock Price") +
   xlab("Date")
-
 

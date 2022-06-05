@@ -12,7 +12,7 @@ tesla <- tesla %>%
   mutate(difference_daily = High - Low)
 
 
-histogram_tesla <- ggplot(data = tesla, aes(x = Date, y = difference_daily, color = difference_daily)) +
+bar_tesla <- ggplot(data = tesla, aes(x = Date, y = difference_daily, color = difference_daily)) +
   # binwidth is 7 so it's organized by weeks
   geom_bar(stat = "identity") +
   scale_fill_brewer(palette = "Set1") +
@@ -23,4 +23,8 @@ histogram_tesla <- ggplot(data = tesla, aes(x = Date, y = difference_daily, colo
   theme(
     plot.title = element_text(face = "bold")
     ) 
+
+
+
+
 
