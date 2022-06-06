@@ -30,6 +30,7 @@ server <- function(input, output) {
       theme_classic() +
       theme(plot.title = element_text(hjust = 0.5))
   })
-  
+  output$x.pos <- renderText(paste0("x = ",input$plot_hover$x))
+  output$y.pos <- renderText(paste0("y = ",input$plot_hover$y))
 }
 shinyApp (ui = ui, server = server)
