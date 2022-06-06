@@ -4,7 +4,8 @@ library(dplyr)
 library(viridis)
 library(plotly)
 
-auto_df <- read.csv("/Users/quinnrosenberg/downloads/Largest automakers by market capitalization.csv")
+auto_df <- read.csv("/Users/quinnrosenberg/final-projects-jsmargarones/Largest\ automakers\ by\ market\ capitalization.csv 
+")
 
 #load the map
 world_map <- map_data("world")

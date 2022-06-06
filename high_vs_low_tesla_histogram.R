@@ -3,10 +3,10 @@
 
 library("ggplot2")
 library("dplyr")
-library(tidyverse)
+library("tidyverse")
 
 
-tesla <- read.csv("/Users/quinnrosenberg/Downloads/tesla.csv")
+tesla <- read.csv("/Users/quinnrosenberg/final-projects-jsmargarones/tesla.csv")
 
 # adds a column to the Tesla table that finds the difference between stock high and low daily
 tesla2 <- tesla %>%

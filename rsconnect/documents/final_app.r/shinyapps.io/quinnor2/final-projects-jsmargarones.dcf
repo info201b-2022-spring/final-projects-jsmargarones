@@ -1,0 +1,14 @@
+name: final-projects-jsmargarones
+title: final-projects-jsmargarones
+username:
+account: quinnor2
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6436719
+bundleId: 5980786
+url: https://quinnor2.shinyapps.io/final-projects-jsmargarones/
+when: 1654492797.48233
+lastSyncTime: 1654492797.48234
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Aggregate_Table.R|app.r|app2.r|Chart#3.R|chart1.R|chart2.R|comparing_car_companies_linechart.R|high_vs_low_tesla_histogram.R|index.html|index.Rmd|README.md|summary_information.R|Table Script|www/Tesla_logo.png

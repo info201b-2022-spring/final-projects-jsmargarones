@@ -9,12 +9,9 @@ library('tidyverse')
 library('shiny')
 
 
-lucid <- read.csv("/Users/quinnrosenberg/Downloads/lucid motors.csv")
-volkswagen <- read.csv("/Users/quinnrosenberg/Downloads/Volkswagen.csv")
-
-tesla <- read.csv("/Users/quinnrosenberg/Downloads/tesla.csv")
-lucid <- read.csv("/Users/quinnrosenberg/Downloads/lucid motors.csv")
-volkswagen <- read.csv("/Users/quinnrosenberg/Downloads/Volkswagen.csv")
+tesla <- read.csv("/Users/quinnrosenberg/final-projects-jsmargarones/tesla.csv")
+lucid <- read.csv("/Users/quinnrosenberg/final-projects-jsmargarones/tesla.csv ")
+volkswagen <- read.csv("/Users/quinnrosenberg/final-projects-jsmargarones/Volkswagen.csv")
 
 
 # finds earliest lucid date
@@ -64,7 +61,7 @@ library('reshape2')
 library('shinyWidgets')
 
 
-automaker_stock <- read.csv("/Users/quinnrosenberg/Downloads/automakers\ stocks\ 2010-2022.csv")
+automaker_stock <- read.csv("/Users/quinnrosenberg/final-projects-jsmargarones/Volkswagen.csv")
 
 automaker_stock <- automaker_stock %>%
   mutate(avg_stock = (High + Low)/2)
@@ -98,5 +95,5 @@ server <- function(input, output) {
   })
 }
 
-shinyApp(ui = ui, server = server)
+#shinyApp(ui = ui, server = s
 
