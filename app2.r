@@ -27,6 +27,7 @@ server <- function(input, output) {
     ggplot(data = tesla, aes(x = Date, y = difference_daily), )  +
       geom_bar(stat="identity") +
       labs(title="Tesla stock high vs low on given date", x ="Date") +
+      
       theme_classic() +
       theme(plot.title = element_text(hjust = 0.5))
   })

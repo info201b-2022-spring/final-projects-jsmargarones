@@ -8,15 +8,14 @@ library("dplyr")
 library('tidyverse')
 library('shiny')
 
-<<<<<<< HEAD
- tesla <- read.csv("/Users/josiemargarones/Downloads/tesla.csv")
-lucid <- read.csv("/Users/josiemargarones/Downloads/lucid motors.csv")
-volkswagen <- read.csv("/Users/josiemargarones/Downloads/Volkswagen.csv")
-=======
+
+lucid <- read.csv("/Users/quinnrosenberg/Downloads/lucid motors.csv")
+volkswagen <- read.csv("/Users/quinnrosenberg/Downloads/Volkswagen.csv")
+
 tesla <- read.csv("/Users/quinnrosenberg/Downloads/tesla.csv")
 lucid <- read.csv("/Users/quinnrosenberg/Downloads/lucid motors.csv")
 volkswagen <- read.csv("/Users/quinnrosenberg/Downloads/Volkswagen.csv")
->>>>>>> 83c964ddbd927592da56c491d3d1ea23ef35e1d9
+
 
 # finds earliest lucid date
 lucid_earliest <- lucid %>%
@@ -53,4 +52,51 @@ line_chart <- ggplot(data = all_data, aes(x = Date, group = 1)) +
   ggtitle("Comparison of Tesla, Lucid Motor, and Volkswagen Stock") +
   ylab("Stock Price") +
   xlab("Date")
+
+#for shinyapp
+
+
+library('shiny')
+library("ggplot2")
+library("dplyr")
+library('tidyverse')
+library('reshape2')
+library('shinyWidgets')
+
+
+automaker_stock <- read.csv("/Users/quinnrosenberg/Downloads/automakers\ stocks\ 2010-2022.csv")
+
+automaker_stock <- automaker_stock %>%
+  mutate(avg_stock = (High + Low)/2)
+#filter(cummax(Date == 01/01/20))
+
+ui <- fluidPage(
+  titlePanel("Car Companies Average Stock"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(inputId = "cars", 
+                  label = "Select Car Brand:",
+                  choices = unique(automaker_stock$Symbol),
+                  # default is Tesla because thats the stock we're most interested in
+                  selected = "TSLA",
+                  multiple = TRUE)
+    ),
+    mainPanel(
+      plotOutput("line")
+    )
+  )
+)
+
+server <- function(input, output) {
+  output$line <- renderPlot( {
+    ggplot(automaker_stock %>% filter(Symbol == input$cars),
+           aes(x = Date, y = avg_stock, group = Symbol)) +
+      geom_line(aes(color = Symbol)) +
+      ggtitle("Comparison of Tesla, Lucid Motor, and Volkswagen Stock") +
+      ylab("Average Stock Price") +
+      xlab("Date")
+  })
+}
+
+shinyApp(ui = ui, server = server)
 
