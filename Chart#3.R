@@ -4,11 +4,11 @@ library(dplyr)
 library(viridis)
 library(plotly)
 
-#load the dataset
 auto_df <- read.csv("/Users/quinnrosenberg/downloads/Largest automakers by market capitalization.csv")
 
 #load the map
-world_map <- maps::map("world",col="darkgrey", fill=TRUE, bg="white", lwd=0.05, mar=rep(0,4),border=0, ylim=c(-80,80))
+world_map <- map_data("world")
+world_map <- mutate(world_map, region = str_replace_all(world_map$region, "USA", "United States"))
 
 #find the total market cap for each country in billions of dollars
 by_country <- auto_df %>% 
@@ -17,33 +17,25 @@ by_country <- auto_df %>%
   summarize(mean_price = mean(price..USD.)) %>%
   arrange(-mean_price)
 
-#download dataset with latitude and longitude of each country
-lat_and_long <- read.csv("/Users/quinnrosenberg/Downloads/world_country_and_usa_states_latitude_and_longitude_values.csv")
-lat_and_long <- select(lat_and_long, country, latitude, longitude)
-
-#merge the datasets by country
-by_country <- merge(x=by_country, y=lat_and_long, by="country")
+#merge map and data
+mean_price_map <- merge(world_map, by_country, by.x = "region", by.y = "country", all = TRUE)
 
 #reorder data
-by_country <- by_country %>%
-  arrange(-mean_price) %>%
+mean_price_map <- mean_price_map %>%
+  arrange(group, order) %>%
   mutate(mytext = paste(
-  "Country: ", country, "\n", 
-  "Average Stock Price: $", mean_price, sep="")
-  ) %>%
-  mutate(mean_price = round(mean_price, digits = 2))
+    "Country: ", region, "\n", 
+    "Average Stock Price: $", mean_price, sep="")
+  )
 
 #create bubble map plot
-average_stock_price_by_country <- ggplot() +
-  geom_polygon(data = world_map, aes(x = long, y = lat, group = group), alpha = 0.03) +
-  geom_point(data = by_country, aes(x = longitude, y = latitude, size = mean_price, color = mean_price, text = mytext, alpha = mean_price)) +
-  scale_size_continuous(range = c(1,14)) +
-  scale_color_viridis(option = "inferno", trans ="log") +
-  scale_alpha_continuous(trans ="log") +
-  theme_void() +
-  theme(legend.position = "left") +
-  title("Average Stock Price by Country") 
+#filter_map <- mean_price_map %>% mutate(mean_price = if_else(is.na(mean_price), 0, mean_price)) %>%  filter(mean_price >= input$price)
+#average_stock__map <- ggplot() +
+  #geom_polygon(data = filter_map, aes(fill = mean_price, x = long, y = lat, group = group, text = mytext)) +
+  #scale_fill_viridis(option = "inferno") +
+  #theme(legend.position = "left") 
 
-#Get interactive bubble map(must look in "Viewer" not "Plots")
-stock_plot <- ggplotly(average_stock_price_by_country, tooltip = "text")
+#stock_map <- ggplotly(average_stock_map, tooltip = "text")
+
+
 
